@@ -1,0 +1,223 @@
+<html>
+  <head>
+	  <meta charset="UTF-8">
+	  <title>Improving Electrolaryngeal Speech Enhancement via a Representation Learning Method Based on Integrated Text and Speech Representations</title>
+  </head>
+  <body>
+	  <article>
+      <header>
+        <h1>Improving Electrolaryngeal Speech Enhancement via a Representation Learning Method Based on Integrated Text and Speech Representations</h1>
+      </header>
+  	  </article>
+	<div><b>Authors:</b> Ding Ma, Jinyi Mi, Fengji Li, Lester Phillip Violeta, Kazuhiro Kobayashi, Tomoki Toda</div>
+	<div><b>Comments:</b> Submitted to IEEE Engineering in Medicine and Biology Society (IEEE EMBC 2025).</div>  
+	<div style="width: 60%">
+		<b>Abstract:</b> Laryngectomees rely on electrolaryngeal (EL) speech for daily communication. However, EL speech lacks essential phonetic features and exhibits a temporal structure that significantly deviates from normal speech patterns, leading to poor naturalness and intelligibility. EL-speech-to-normal-speech conversion (EL2SP) based on sequence-to-sequence (seq2seq) voice conversion (VC) is a potential approach to address this deficiency; however, due to huge mismatches between EL and normal speech features, seq2seq-based mapping inevitably accumulates errors, limiting conversion performance. To address this issue, we propose a novel representation learning method that integrates paired EL speech and text representations into seq2seq EL2SP, facilitating more effective mapping to target speech. Specifically, we design a joint training framework by inheriting the speech encoder from the pretrained VC, as well as the text encoder and speech decoder from a text-to-speech model fine-tuned on target speech. By incorporating text information during training, the network enriches intermediate representations while guiding the alignment between EL and normal speech. Next, we retain only the speech encoder and decoder to construct the final EL2SP model. During training, we apply autoencoder-style reconstruction, where only the speech encoder is updated. This enables the model to effectively inherit the integrated representations without increasing complexity. Experimental results demonstrate that our method, combined with data augmentation, outperforms the baselines that solely learn speech representations. Notably, our approach achieves a 19.2\% improvement in character error rate and a 0.67 increase in naturalness score compared to a typical pretraining--finetuning baseline, demonstrating its effectiveness.
+	</div>
+
+  <div>
+      	<h2><b>Main concept</b></h2>
+      	<img src="samples/Main_concept.jpg" style="width: 40%;"/>
+  </div>
+
+<div style="width: 80%">
+  <h2><b></b>EL2SP dataset</b></h2>
+  <strong>Source EL data</strong>, which is an EL corpus recorded from a male laryngectomee; <strong>Target normal data</strong>, which is a nomral courpus recorded from a healthy male speaker.
+</div>
+
+    <div style="width: 80%">
+      <h3><b>Six types of speech were evaluated.</b></h3>
+      <ul>
+        <li><strong>Referenced speech</strong>:</li>
+			<ul>
+				<li>Source: Source EL speech (<strong>EL</strong>).</li>
+				<li>Target: Target normal speech (<strong>SP</strong>).</li>
+			</ul>
+        <li>Converted speech from <strong>Baseline 1</strong>, <strong>Baseline 2</strong>.</li>
+        <li>Converted speech from <strong>Proposed 1</strong>, <strong>Proposed 2</strong>.</li>
+		</ul>
+    </ul>
+	</div> 
+
+    <div style="width: 80%">
+		<h2><b>Samples</b></h2>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+      <!-- 第一组 -->
+      <div style="width: 30%; display: flex; flex-direction: column; align-items: flex-start;">
+          <h4 class="transcript">Transcription: お待ちしておりました。(o ma chi shi te ori ma shi ta)</h4>
+          <table>
+              <tr><th>EL</th><th>NL</th></tr>
+              <tr><th style="text-align: left;" colspan="2">Reference:</th></tr>
+              <tr>
+                  <td><audio controls><source src="samples/conversion/el/ASA238.wav"></audio></td>
+                  <td><audio controls><source src="samples/conversion/nl/ASA238.wav"></audio></td>
+              </tr>
+          </table>
+          <table>
+              <tr><th>Baseline 1</th><th>Baseline 2</th></tr>
+              <tr><th style="text-align: left;" colspan="2">Conversion:</th></tr>
+              <tr>
+                  <td><audio controls><source src="samples/conversion/Baseline1/ASA238.wav"></audio></td>
+                  <td><audio controls><source src="samples/conversion/Baseline2/ASA238.wav"></audio></td>
+              </tr>
+          </table>
+          <table>
+              <tr><th>Proposed 1</th><th>Proposed 2</th></tr>
+              <tr><th style="text-align: left;" colspan="2">Conversion:</th></tr>
+              <tr>
+                  <td><audio controls><source src="samples/conversion/Proposed1/ASA238.wav"></audio></td>
+                  <td><audio controls><source src="samples/conversion/Proposed2/ASA238.wav"></audio></td>
+              </tr>
+          </table>
+      </div>
+  
+      <!-- 第二组 -->
+      <div style="width: 30%; display: flex; flex-direction: column; align-items: flex-start;">
+          <h4 class="transcript">Transcription: またお越しください。 (ma ta o ko shi ku da sai)</h4>
+          <table>
+              <tr><th>EL</th><th>NL</th></tr>
+              <tr><th style="text-align: left;" colspan="2">Reference:</th></tr>
+              <tr>
+                  <td><audio controls><source src="samples/conversion/el/ASA236.wav"></audio></td>
+                  <td><audio controls><source src="samples/conversion/nl/ASA236.wav"></audio></td>
+              </tr>
+          </table>
+          <table>
+              <tr><th>Baseline 1</th><th>Baseline 2</th></tr>
+              <tr><th style="text-align: left;" colspan="2">Conversion:</th></tr>
+              <tr>
+                  <td><audio controls><source src="samples/conversion/Baseline1/ASA236.wav"></audio></td>
+                  <td><audio controls><source src="samples/conversion/Baseline2/ASA236.wav"></audio></td>
+              </tr>
+          </table>
+          <table>
+              <tr><th>Proposed 1</th><th>Proposed 2</th></tr>
+              <tr><th style="text-align: left;" colspan="2">Conversion:</th></tr>
+              <tr>
+                  <td><audio controls><source src="samples/conversion/Proposed1/ASA236.wav"></audio></td>
+                  <td><audio controls><source src="samples/conversion/Proposed2/ASA236.wav"></audio></td>
+              </tr>
+          </table>
+      </div>
+  
+      <!-- 第三组 -->
+      <div style="width: 30%; display: flex; flex-direction: column; align-items: flex-start;">
+          <h4 class="transcript">Transcription: 卵と牛乳がダメです。 (ta ma go to gyuunyuu ga da me de su)</h4>
+          <table>
+              <tr><th>EL</th><th>NL</th></tr>
+              <tr><th style="text-align: left;" colspan="2">Reference:</th></tr>
+              <tr>
+                  <td><audio controls><source src="samples/conversion/el/ASA237.wav"></audio></td>
+                  <td><audio controls><source src="samples/conversion/nl/ASA237.wav"></audio></td>
+              </tr>
+          </table>
+          <table>
+              <tr><th>Baseline 1</th><th>Baseline 2</th></tr>
+              <tr><th style="text-align: left;" colspan="2">Conversion:</th></tr>
+              <tr>
+                  <td><audio controls><source src="samples/conversion/Baseline1/ASA237.wav"></audio></td>
+                  <td><audio controls><source src="samples/conversion/Baseline2/ASA237.wav"></audio></td>
+              </tr>
+          </table>
+          <table>
+              <tr><th>Proposed 1</th><th>Proposed 2</th></tr>
+              <tr><th style="text-align: left;" colspan="2">Conversion:</th></tr>
+              <tr>
+                  <td><audio controls><source src="samples/conversion/Proposed1/ASA237.wav"></audio></td>
+                  <td><audio controls><source src="samples/conversion/Proposed2/ASA237.wav"></audio></td>
+              </tr>
+          </table>
+      </div>
+  </div>
+<br>  
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+  <!-- 第四组 -->
+  <div style="width: 30%; display: flex; flex-direction: column; align-items: flex-start;">
+      <h4 class="transcript">Transcription: ２０２便をキャンセルしたいのですが。(ni hyaku ni bin wo kyanseru si tai no de su ga)</h4>
+      <table>
+          <tr><th>EL</th><th>NL</th></tr>
+          <tr><th style="text-align: left;" colspan="2">Reference:</th></tr>
+          <tr>
+              <td><audio controls><source src="samples/conversion/el/ASA302.wav"></audio></td>
+              <td><audio controls><source src="samples/conversion/nl/ASA302.wav"></audio></td>
+          </tr>
+      </table>
+      <table>
+          <tr><th>Baseline 1</th><th>Baseline 2</th></tr>
+          <tr><th style="text-align: left;" colspan="2">Conversion:</th></tr>
+          <tr>
+              <td><audio controls><source src="samples/conversion/Baseline1/ASA302.wav"></audio></td>
+              <td><audio controls><source src="samples/conversion/Baseline2/ASA302.wav"></audio></td>
+          </tr>
+      </table>
+      <table>
+          <tr><th>Proposed 1</th><th>Proposed 2</th></tr>
+          <tr><th style="text-align: left;" colspan="2">Conversion:</th></tr>
+          <tr>
+              <td><audio controls><source src="samples/conversion/Proposed1/ASA302.wav"></audio></td>
+              <td><audio controls><source src="samples/conversion/Proposed2/ASA302.wav"></audio></td>
+          </tr>
+      </table>
+  </div>
+
+  <!-- 第五组 -->
+  <div style="width: 30%; display: flex; flex-direction: column; align-items: flex-start;">
+      <h4 class="transcript">Transcription: 大丈夫、正常値です。 (dai jou bu sei jou chi de su)</h4>
+      <table>
+          <tr><th>EL</th><th>NL</th></tr>
+          <tr><th style="text-align: left;" colspan="2">Reference:</th></tr>
+          <tr>
+              <td><audio controls><source src="samples/conversion/el/ASA107.wav"></audio></td>
+              <td><audio controls><source src="samples/conversion/nl/ASA107.wav"></audio></td>
+          </tr>
+      </table>
+      <table>
+          <tr><th>Baseline 1</th><th>Baseline 2</th></tr>
+          <tr><th style="text-align: left;" colspan="2">Conversion:</th></tr>
+          <tr>
+              <td><audio controls><source src="samples/conversion/Baseline1/ASA107.wav"></audio></td>
+              <td><audio controls><source src="samples/conversion/Baseline2/ASA107.wav"></audio></td>
+          </tr>
+      </table>
+      <table>
+          <tr><th>Proposed 1</th><th>Proposed 2</th></tr>
+          <tr><th style="text-align: left;" colspan="2">Conversion:</th></tr>
+          <tr>
+              <td><audio controls><source src="samples/conversion/Proposed1/ASA107.wav"></audio></td>
+              <td><audio controls><source src="samples/conversion/Proposed2/ASA107.wav"></audio></td>
+          </tr>
+      </table>
+  </div>
+
+  <!-- 第六组 -->
+  <div style="width: 30%; display: flex; flex-direction: column; align-items: flex-start;">
+      <h4 class="transcript">Transcription: 日本の民芸品です。 (ni hon no min gei hin de su)</h4>
+      <table>
+          <tr><th>EL</th><th>NL</th></tr>
+          <tr><th style="text-align: left;" colspan="2">Reference:</th></tr>
+          <tr>
+              <td><audio controls><source src="samples/conversion/el/ASA221.wav"></audio></td>
+              <td><audio controls><source src="samples/conversion/nl/ASA221.wav"></audio></td>
+          </tr>
+      </table>
+      <table>
+          <tr><th>Baseline 1</th><th>Baseline 2</th></tr>
+          <tr><th style="text-align: left;" colspan="2">Conversion:</th></tr>
+          <tr>
+              <td><audio controls><source src="samples/conversion/Baseline1/ASA221.wav"></audio></td>
+              <td><audio controls><source src="samples/conversion/Baseline2/ASA221.wav"></audio></td>
+          </tr>
+      </table>
+      <table>
+          <tr><th>Proposed 1</th><th>Proposed 2</th></tr>
+          <tr><th style="text-align: left;" colspan="2">Conversion:</th></tr>
+          <tr>
+              <td><audio controls><source src="samples/conversion/Proposed1/ASA221.wav"></audio></td>
+              <td><audio controls><source src="samples/conversion/Proposed2/ASA221.wav"></audio></td>
+          </tr>
+      </table>
+  </div>
+</div>
+  </body>
+</html>
+
